@@ -180,45 +180,38 @@
     function allowDrop(ev) {
       ev.preventDefault();
     }
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
     function drop(ev) {
-      ev.preventDefault();
-      var data;
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var draggableElement = document.getElementById(data);
+    var dropzone = ev.target.closest('.dropcontainer').querySelector('.dropbox');
+    dropzone.appendChild(draggableElement);
+}
 
-      // Handle both mouse and touch events
-       if (ev.type === 'mouseup' || ev.type === 'touchend') {
-        data = ev.dataTransfer.getData("text");
-      }
-
-      var draggableElement = document.getElementById(data);
-      var dropzone = ev.target.closest('.dropcontainer').querySelector('.dropbox');
-       dropzone.appendChild(draggableElement);
-    }
-
-    // Event listeners for mouse events
-    document.querySelectorAll('.note img').forEach(function (item) {
+// Event listeners for mouse events
+document.querySelectorAll('.note img').forEach(function (item) {
     item.addEventListener('mousedown', drag);
-    });
-
-    document.querySelectorAll('.dropcontainer').forEach(function (item) {
     item.addEventListener('mouseup', drop);
-    });
+});
 
-    // Event listeners for touch events
-    document.querySelectorAll('.note img').forEach(function (item) {
-    item.addEventListener('touchstart', drag);
+// Event listeners for touch events
+document.querySelectorAll('.note img').forEach(function (item) {
+    item.addEventListener('touchstart', function(event) {
+        drag(event);
+        // Prevent default touch behavior
+        event.preventDefault();
     });
-
-    document.querySelectorAll('.dropcontainer').forEach(function (item) {
-    item.addEventListener('touchend', drop);
+    item.addEventListener('touchend', function(event) {
+        drop(event);
+        // Prevent default touch behavior
+        event.preventDefault();
     });
+});
 
-    // Event listener for allowing drop
-    document.querySelectorAll('.dropcontainer').forEach(function (item) {
+// Event listener for allowing drop
+document.querySelectorAll('.dropcontainer').forEach(function (item) {
     item.addEventListener('dragover', allowDrop);
-    });
+});
     
     function checkInput() {
     
