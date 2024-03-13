@@ -81,7 +81,7 @@
 
 <body>
   <div class="container">
-    <h1 class="cds--heading">4b. feladat</h1>
+    <h1 class="cds--heading">4b.01. feladat</h1>
     <p class="large-text">
       <!--
       Menjetek az Andrássy út 60. Csengery utca felőli sarkára!<br>
@@ -179,6 +179,9 @@
     }
     function allowDrop(ev) {
       ev.preventDefault();
+    }
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
     }
     function drop(ev) {
     ev.preventDefault();
