@@ -81,7 +81,7 @@
 
 <body>
   <div class="container">
-    <h1 class="cds--heading">4b.01. feladat</h1>
+    <h1 class="cds--heading">4b.02. feladat</h1>
     <p class="large-text">
       <!--
       Menjetek az Andrássy út 60. Csengery utca felőli sarkára!<br>
@@ -177,43 +177,59 @@
       document.querySelector('.hint-images .hidden').classList.remove('hidden');
       return false;
     }
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-    function drop(ev) {
+    let isDragging = false;
+let draggedItem = null;
+
+function allowDrop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var draggableElement = document.getElementById(data);
-    var dropzone = ev.target.closest('.dropcontainer').querySelector('.dropbox');
-    dropzone.appendChild(draggableElement);
+}
+
+function dragStart(ev) {
+    isDragging = true;
+    draggedItem = ev.target;
+}
+
+function dragEnd(ev) {
+    isDragging = false;
+    draggedItem = null;
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    if (isDragging && draggedItem) {
+        var dropzone = ev.target.closest('.dropcontainer').querySelector('.dropbox');
+        dropzone.appendChild(draggedItem);
+    }
 }
 
 // Event listeners for mouse events
 document.querySelectorAll('.note img').forEach(function (item) {
-    item.addEventListener('mousedown', drag);
-    item.addEventListener('mouseup', drop);
+    item.addEventListener('mousedown', dragStart);
+    item.addEventListener('mouseup', dragEnd);
 });
 
 // Event listeners for touch events
 document.querySelectorAll('.note img').forEach(function (item) {
     item.addEventListener('touchstart', function(event) {
-        drag(event);
-        // Prevent default touch behavior
-        event.preventDefault();
+        dragStart(event.touches[0]);
+    });
+    item.addEventListener('touchmove', function(event) {
+        if (isDragging && draggedItem) {
+            // Update dragged item position
+            const touch = event.touches[0];
+            draggedItem.style.left = touch.clientX + 'px';
+            draggedItem.style.top = touch.clientY + 'px';
+        }
     });
     item.addEventListener('touchend', function(event) {
-        drop(event);
-        // Prevent default touch behavior
-        event.preventDefault();
+        dragEnd(event.changedTouches[0]);
     });
 });
 
 // Event listener for allowing drop
 document.querySelectorAll('.dropcontainer').forEach(function (item) {
     item.addEventListener('dragover', allowDrop);
+    item.addEventListener('drop', drop);
 });
     
     function checkInput() {
