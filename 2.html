@@ -33,6 +33,11 @@
     .hint-img {
       display: none;
     }
+    .hint-images .hidden {
+      display: none;
+    }.hidden-checkbox:checked + .hidden-checkbox-label {
+      background-color: var(--cds-button-secondary-active, #6f6f6f);
+    } 
   </style>
 </head>
 
@@ -47,7 +52,7 @@
       -->
     </p>
     <p style="text-align: center;">
-      <img src="./2-feladat.png" alt="2. feladat" style="max-width: 100%; height: auto">
+      <img src="./2-feladat/Fovarosok.png" alt="2. feladat" style="max-width: 100%; height: auto">
     </p>
     <form class="cds--form" onsubmit="return checkInput()">
       <input type="text" class="cds--text-input" placeholder="Írd ide a megoldást" inputmode="text" required>
@@ -74,15 +79,27 @@
       <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
-    <div class="hint-img">
-      <img src="./2-feladat-segitseg.jpg" alt="segítség" style="max-width: 100%; height: auto;">
+    <div class="hint-images">
+      <p class="hidden" style="font-size: 1.5rem;">      
+        A térképen a pontok fővárosokat jelölnek<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Egy bizonyos főváros nevét írjátok be a mezőbe!<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Keressétek meg a képen látható kiállított tárgyat!<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Ez egy falnak a darabja<br><br>
+      </p>      
     </div>
+    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
   </div>
 
   <script>
     function showHint() {
-      document.querySelector('.hint-img').style.display = 'block';
+      document.querySelector('.hint-images .hidden').classList.remove('hidden');
+      document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
     function removeAccents(str) {
