@@ -53,62 +53,74 @@
       <img src="./8-feladat/MAV.png" alt="8. feladat" style="max-width: 100%; height: auto; margin: 10px;">
     </p>
     <form class="cds--form" style="display: block; margin-left: 28px;" onsubmit="return checkInput()">
-      <select id="A" name="A" >
-        <option value="0">A</option>
-        <option value="✔">✔</option>               
-      </select>
-      <select id="B" name="B" >
-        <option value="0">B</option>
-        <option value="✔">✔</option>               
-      </select>
-      <select id="C" name="C" >
-        <option value="0">C</option>
-        <option value="✔">✔</option>               
-      </select>
-      <select id="D" name="D" >
-        <option value="0">D</option>
-        <option value="✔">✔</option>               
-      </select>
-      <select id="E" name="E" >
-        <option value="0">E</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="F" name="F" >
-        <option value="0">F</option>
-        <option value="✔">✔</option>                 
-      </select>
-      <select id="G" name="G" >
-        <option value="0">G</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="H" name="H" >
-        <option value="0">H</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="I" name="I" >
-        <option value="0">I</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="J" name="J" >
-        <option value="0">J</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="K" name="K" >
-        <option value="0">K</option>
-        <option value="✔">✔</option>                 
-      </select>
-      <select id="L" name="L" >
-        <option value="0">L</option>
-        <option value="✔">✔</option>                  
-      </select>
-      <select id="M" name="M" >
-        <option value="0">M</option>
-        <option value="✔">✔</option>                
-      </select>
-      <select id="N" name="N" >
-        <option value="0">N</option>
-        <option value="✔">✔</option>               
-      </select>      
+      <div  style="display: flex; align-items: center;">
+        <div>
+          <img src="./8-feladat/Sabre.jpg">
+        </div>
+        <div>
+          <select id="Sabre" name="Sabre">        
+            <option value="0"></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>      
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>     
+          </select>
+        </div>
+        <div>
+          <img src="./8-feladat/Bayonet.jpg">
+        </div>
+        <div>
+          <select id="Bayonet" name="Bayonet">        
+            <option value="0"></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>      
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>     
+          </select>
+        </div>
+        <div>
+          <img src="./8-feladat//Finger.jpg">
+        </div>
+        <div>
+          <select id="Finger" name="Finger">        
+            <option value="0"></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>      
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>     
+          </select>
+        </div>
+      </div>   
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -144,25 +156,14 @@
       return false;
     }     
     function checkInput() {
-      const A = document.getElementById('A').value;
-      const B = document.getElementById('B').value;
-      const C = document.getElementById('C').value;
-      const D = document.getElementById('D').value;
-      const E = document.getElementById('E').value;
-      const F = document.getElementById('F').value;
-      const G = document.getElementById('G').value;
-      const H = document.getElementById('H').value;
-      const I = document.getElementById('I').value;
-      const J = document.getElementById('J').value;
-      const K = document.getElementById('K').value;
-      const L = document.getElementById('L').value;
-      const M = document.getElementById('M').value;
-      const N = document.getElementById('N').value;    
+      const sabre = document.getElementById('Sabre').value;
+      const bayonet = document.getElementById('Bayonet').value;
+      const finger = document.getElementById('Finger').value; 
       
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
 
-      if (A === "✔" && B !== "✔" && C !== "✔" && D !== "✔" && E !== "✔" && F !== "✔" && G === "✔" && H !== "✔" && I !== "✔"&& J === "✔" && K === "✔" && L !== "✔" && M !== "✔" && N !== "✔") {
+      if (sabre === "A" && bayonet === "J" && finger === "G") {
         showNotification(successNotification);
         setTimeout(() => {
           window.location.href = '9.html';
