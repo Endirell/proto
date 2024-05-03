@@ -30,6 +30,9 @@
     .cds--inline-notification--visible {
       display: block;
     }
+    .hint-img {
+      display: none;
+    }
   </style>
 </head>
 
@@ -66,10 +69,20 @@
       <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <a href="https://goo.gl/maps/SDnXYjyDbt5mLNnL8" target="_blank" rel="noopener noreferrer" class="cds--link">Segítség</a>
+    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
+    <div class="hint-img">
+      <p class="large-text">      
+        1956
+      </p>
+    </div>
   </div>
 
   <script>
+    function showHint() {
+      document.querySelector('.hint-img').style.display = 'block';
+      return false;
+    }
+
     function checkInput() {
       const inputElement = document.querySelector('.cds--text-input');
       const inputValue = inputElement.value.trim();
