@@ -118,47 +118,41 @@
       return false;
     }
     function checkInput() {
-    // Get all checkboxes by name
-    const checkboxes = document.getElementsByName('checkboxes');
+      // Get all checkboxes by name
+      const checkboxes = document.getElementsByName('checkboxes');
 
-    // Initialize variables to track selected checkboxes and whether all conditions are met
-    let selectedCount = 0;
-    let isCorrect = false;
+      // Initialize variables to track selected checkboxes and whether all conditions are met
+      let isCorrect = false;
 
-    let foundAllThere = false;
-    let foundAllNotThere = false;
+      let five = false;
+      let nine = false;
+      let eleven = false;
+      let twelve = false;
 
-    // Loop through all checkboxes
-    for (const checkbox of checkboxes) {
-      if (checkbox.checked) {
-        selectedCount++;
-        // Check if the selected checkboxes are checkbox-3, checkbox-5, and checkbox-7
-        if (checkbox.id === 'checkbox-5' || checkbox.id === 'checkbox-9' || checkbox.id === 'checkbox-11') {
-          foundAllThere = true;
-        } else {
-          // If any other checkbox is selected, then the condition is not met
-          foundAllThere = false;
+       // Loop through all checkboxes
+      for (const checkbox of checkboxes) {
+        if (checkbox.checked) {        
+          // Check if the selected checkboxes are checkbox-5, checkbox-9, and checkbox-11
+          if (checkbox.id === 'checkbox-5') {
+            five = true;
+          }
+          else if (checkbox.id === 'checkbox-9') {
+            nine = true;
+          }
+          else if (checkbox.id === 'checkbox-11') {
+            eleven = true;
+          }
+          else if (checkbox.id === 'checkbox-12') {
+            twelve = true;
+          }
+          else {
+            isCorrect = false;
           break;
-        }
+          }
+         }
       }
-    }
 
-    for (const checkbox of checkboxes) {
-      if (checkbox.checked) {
-        selectedCount++;
-        // Check if the selected checkboxes are checkbox-3, checkbox-5, and checkbox-7
-        if (checkbox.id === 'checkbox-1' || checkbox.id === 'checkbox-2' || checkbox.id === 'checkbox-3' || checkbox.id === 'checkbox-4' || checkbox.id === 'checkbox-6' ||
-            checkbox.id === 'checkbox-7' || checkbox.id === 'checkbox-8' || checkbox.id === 'checkbox-10' || checkbox.id === 'checkbox-12') {
-          foundAllNotThere = true;
-        } else {
-          // If any other checkbox is selected, then the condition is not met
-          foundAllNotThere = false;
-          break;
-        }
-      }
-    }
-
-      if (foundAllThere === true || foundAllNotThere === true) {
+      if (five && nine && eleven && twelve === false) {
         isCorrect = true;
       }
 
