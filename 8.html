@@ -43,6 +43,16 @@
   .dropdown-options {
         font-size: 24px; /* Change this value to your desired font size */
     }
+    .whitespace2 {
+      height: 10rem;
+    }
+    .dontshow {
+      display: none;
+    }
+    .clickable {
+      cursor: pointer;
+      color: blue;
+    } 
   </style>
 </head>
 
@@ -125,6 +135,18 @@
       <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
+    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
+    <div id="inventoryitems" class="dontshow">
+        <p id="item1" class="clickable" onclick="showPicture('picture1'); toggleVisibility('item1')">Vonatjegy<br><br></p>
+        <img id="picture1" src="./Inventory/Jegy.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture1'); toggleVisibility('item1')"><br>
+        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
+        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
+        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
+        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
+        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
+        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>  
+    </div> 
+    <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
     <div class="hint-img">
       <img src="./3night-feladat/Segitseg.jpg" alt="segítség" style="max-width: 100%; height: auto;">
@@ -136,6 +158,32 @@
       document.querySelector('.hint-img').style.display = 'block';
       return false;
     }     
+
+    function toggleVisibility(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('dontshow')) {
+            element.classList.remove('dontshow');
+        } else {
+            element.classList.add('dontshow');
+        }
+     }
+     function showPicture(id) {
+        toggleVisibility(id);
+     }
+      function hidePicture(id) {
+        toggleVisibility(id);
+      }
+      document.getElementById('inventory').addEventListener('click', function() {
+        toggleVisibility('inventoryitems');
+    });
+    var items = document.querySelectorAll('.item');
+    items.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var pictureId = this.getAttribute('data-picture');
+            toggleVisibility(pictureId);
+        });
+    });
+    
     function checkInput() {
       const I = document.getElementById('I').value;
       const II = document.getElementById('II').value;
