@@ -65,33 +65,24 @@
     .hidden-checkbox:checked + .hidden-checkbox-label {
       background-color: var(--cds-button-secondary-active, #6f6f6f);
     }
+    .whitespace2 {
+      height: 10rem;
+    }
+    .dontshow {
+      display: none;
+    }
+    .clickable {
+      cursor: pointer;
+      color: blue;
+    }  
   </style>
 </head>
 
 <body>
   <div class="container"> 
     <p class="large-text">      
-      Menjetek a Hopp Ferenc Ázsiai Művészeti Múzeumhoz (Andrássy út 103.)!<br><br>
-      Szótár<br>
-    </p>    
-    <div class="columncontainer">
-      <div class="column">
-        <p>
-          龍      sárkány<br>
-          宮      palota<br>
-          象      elefánt<br>
-          狱      börtön<br>
-        </p>
-      </div>
-      <div class="column">
-        <p>
-          庙      templom<br>
-          鹤      daru<br>
-          塔      pagoda<br>
-          虎      tigris<br>
-        </p>
-      </div>    
-    </div>
+      Menjetek a Hopp Ferenc Ázsiai Művészeti Múzeumhoz (Andrássy út 103.)!<br><br>    
+    </p>   
     <form class="cds--form" style="display: block; margin-left: 28px;" onsubmit="return checkInput()">
       <select id="Animal" name="Animal" >
         <option value="0">👁</option>
@@ -130,6 +121,18 @@
       <button class="cds--btn cds--btn--primary submit-btn" type="submit" style="display: block;">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
+    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
+    <div id="inventoryitems" class="dontshow">        
+        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
+        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
+        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
+        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
+        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
+        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
+        <p  id="item6" class="clickable" onclick="showPicture('picture6'); toggleVisibility('item6')">Piros cetli<br><br></p>
+        <img id="picture6" src="./Inventory/Piros cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture6'); toggleVisibility('item6')"><br>        
+    </div> 
+    <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
       <img src="./11-feladat/Segitseg1.jpg" alt="segítség" class="hidden" style="max-width: 100%; height: auto;">
       <p class="large-text">      
@@ -146,6 +149,32 @@
       document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
+
+    function toggleVisibility(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('dontshow')) {
+            element.classList.remove('dontshow');
+        } else {
+            element.classList.add('dontshow');
+        }
+     }
+     function showPicture(id) {
+        toggleVisibility(id);
+     }
+      function hidePicture(id) {
+        toggleVisibility(id);
+      }
+      document.getElementById('inventory').addEventListener('click', function() {
+        toggleVisibility('inventoryitems');
+    });
+    var items = document.querySelectorAll('.item');
+    items.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var pictureId = this.getAttribute('data-picture');
+            toggleVisibility(pictureId);
+        });
+    });
+    
     function checkInput() {
       const animal = document.getElementById('Animal').value;
       const building = document.getElementById('Building').value;
