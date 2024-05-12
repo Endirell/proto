@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>17. feladat</title>
+  <title>21. feladat</title>
   <link rel="stylesheet" href="https://unpkg.com/@carbon/styles@1.34.0/css/styles.css">
   <style>
     /* Add any additional styles here */
@@ -33,28 +33,32 @@
     .hint-images .hidden {
       display: none;
     }
+    .dontshow {
+      display: none;
+    }
+    .clickable {
+      cursor: pointer;
+      color: blue;
+    }  
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <p class="large-text">      
-      Maradjatok az oszlopcsarnok 14 szobránál!<br><br>      
-    </p>      
+  <div class="container">         
     <form class="cds--form" onsubmit="return checkInput()">
-      <p>Az arany pecséttől lépjetek a legközelebbi buzogányhoz
+      <p>1. lépés
         <input type="text" id = "A" class="cds--text-input" placeholder="Név" inputmode="text"><br><br>
       </p>
-      <p>Utazzatok előre az időben annyiszor, ahány csík van a pajzson
+      <p>2. lépés
         <input type="text" id = "B" class="cds--text-input" placeholder="Név" inputmode="text"><br><br>
       </p>
-      <p>Lépjetek a teljesen borotvált arc irányába ötször
+      <p>3. lépés
         <input type="text" id = "C" class="cds--text-input" placeholder="Név" inputmode="text"><br><br>
       </p>
-      <p>Lépjetek a legnagyobb kard irányába annyiszor, ahány korona van
+      <p>4. lépés
         <input type="text" id = "D" class="cds--text-input" placeholder="Név" inputmode="text"><br><br>
       </p>
-      <p>A mellvért irányába lépjetek háromszor
+      <p>5. lépés
         <input type="text" id = "E" class="cds--text-input" placeholder="Név" inputmode="text"><br><br>
       </p>           
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
@@ -79,6 +83,24 @@
       </div>
       <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
+
+    <div class="whitespace"></div> <!-- Add whitespace between form and link -->
+    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
+    <div id="inventoryitems" class="dontshow">        
+        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
+        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>
+        <p  id="item5" class="clickable" onclick="showPicture('picture5'); toggleVisibility('item5')">Lila cetli<br><br></p>
+        <img id="picture5" src="./Inventory/Lila cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture5'); toggleVisibility('item5')"><br>
+        <p  id="item6" class="clickable" onclick="showPicture('picture6'); toggleVisibility('item6')">Piros cetli<br><br></p>
+        <img id="picture6" src="./Inventory/Piros cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture6'); toggleVisibility('item6')"><br>
+        <p  id="item7" class="clickable" onclick="showPicture('picture7'); toggleVisibility('item7')">Kék cetli<br><br></p>
+        <img id="picture7" src="./Inventory/Kek cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture7'); toggleVisibility('item7')"><br>
+        <p  id="item8" class="clickable" onclick="showPicture('picture8'); toggleVisibility('item8')">Sárga cetli<br><br></p>
+        <img id="picture8" src="./Inventory/Sarga cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture8'); toggleVisibility('item8')"><br>
+        <p  id="item9" class="clickable" onclick="showPicture('picture9'); toggleVisibility('item9')">Színes szalag<br><br></p>
+        <img id="picture9" src="./Inventory/Szalag.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture9'); toggleVisibility('item9')"><br>
+    </div> 
+    
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
       <p class="hidden">      
@@ -106,6 +128,32 @@
       document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
+
+    function toggleVisibility(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('dontshow')) {
+            element.classList.remove('dontshow');
+        } else {
+            element.classList.add('dontshow');
+        }
+     }
+     function showPicture(id) {
+        toggleVisibility(id);
+     }
+      function hidePicture(id) {
+        toggleVisibility(id);
+      }
+      document.getElementById('inventory').addEventListener('click', function() {
+        toggleVisibility('inventoryitems');
+    });
+    var items = document.querySelectorAll('.item');
+    items.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var pictureId = this.getAttribute('data-picture');
+            toggleVisibility(pictureId);
+        });
+    });
+
     function removeAccents(str) {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
