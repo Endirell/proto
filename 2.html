@@ -157,7 +157,7 @@
       const errorNotification = document.getElementById('notification-error');
       const solution = removeAccents(inputValue);
 
-      if (solution === 'berlin') {
+      if (solution.includes('berlin')) {
         showNotification(successNotification);
         setTimeout(() => {
           window.location.href = '3.html';
