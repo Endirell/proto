@@ -65,7 +65,7 @@
       <div  style="display: flex; align-items: center;">        
         <div>
           <select id="I" name="I"  class="dropdown-options">        
-            <option value="0">😶</option>
+            <option value="0"></option>
             <option value="A">🙂</option>
             <option value="B">😀</option>
             <option value="C">😛</option>
@@ -73,7 +73,7 @@
         </div>
         <div>
           <select id="II" name="II"  class="dropdown-options">        
-            <option value="0">😶</option>
+            <option value="0"></option>
             <option value="A">🙂</option>
             <option value="B">😀</option>
             <option value="C">😛</option>
@@ -81,7 +81,7 @@
         </div>
         <div  style="margin-right: 15px;">
           <select id="III" name="III"  class="dropdown-options">        
-            <option value="0">😶</option>
+            <option value="0"></option>
             <option value="A">🙂</option>
             <option value="B">😀</option>
             <option value="C">😛</option>
@@ -89,23 +89,18 @@
         </div>
         <div>
           <select id="IV" name="IV"  class="dropdown-options">        
-            <option value="0">😶</option>
+            <option value="0"></option>
             <option value="A">🙂</option>
             <option value="B">😀</option>
             <option value="C">😛</option>
           </select>
         </div>
         <div>
-          <select id="V" name="V"  class="dropdown-options">        
-            <option value="0">😶</option>
-            <option value="A">🙂</option>
-            <option value="B">😀</option>
-            <option value="C">😛</option>
-          </select>
-        </div>
+          <span style="margin-left: 3px; margin-right: 10px; font-size: 24px;">😀</span>
+        </div>        
         <div>
           <select id="VI" name="VI"  class="dropdown-options">        
-            <option value="0">😶</option>
+            <option value="0"></option>
             <option value="A">🙂</option>
             <option value="B">😀</option>
             <option value="C">😛</option>
@@ -188,15 +183,14 @@
       const I = document.getElementById('I').value;
       const II = document.getElementById('II').value;
       const III = document.getElementById('III').value;
-      const IV = document.getElementById('IV').value;
-      const V = document.getElementById('V').value;
+      const IV = document.getElementById('IV').value;      
       const VI = document.getElementById('VI').value;
       
       
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
 
-      if (I === "B" && II === "A" && III === "C" && IV === "B" && V === "A" && VI === "B") {
+      if (I === "B" && II === "A" && III === "C" && IV === "B" && VI === "B") {
         showNotification(successNotification);
         setTimeout(() => {
           window.location.href = '9.html';
