@@ -33,6 +33,9 @@
     .hint-img {
       display: none;
     }
+    .hint-images .hidden {
+      display: none;
+    }
     .whitespace2 {
       height: 10rem;
     }
@@ -196,15 +199,27 @@
         <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
-    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
-    <div class="hint-img">
-      <img src="./9-feladat/Segitseg.jpg" alt="segítség" style="max-width: 100%; height: auto;">
+    <div class="hint-images">
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Nézzetek bele a tárgylistába!<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Vonatjegy<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        Sorszám<br><br>
+      </p>
+      <p class="hidden" style="font-size: 1.5rem;">      
+        DH0...<br><br>
+      </p>      
     </div>
+    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
   </div>
 
   <script>
     function showHint() {
-      document.querySelector('.hint-img').style.display = 'block';
+      document.querySelector('.hint-images .hidden').classList.remove('hidden');
+      document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
 
