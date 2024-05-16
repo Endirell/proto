@@ -45,7 +45,10 @@
     .clickable {
       cursor: pointer;
       color: blue;
-    } 
+    }
+    .cds--text-input::placeholder {
+      color: rgb(209, 85, 209);
+    }  
   </style>
 </head>
 
@@ -131,6 +134,9 @@
     function removeAccents(str) {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
+
+    let isAudioPlaying = false;
+    
     function checkInput() {
       const inputElement = document.querySelector('.cds--text-input');
       const inputValue = inputElement.value.trim().toLowerCase();
@@ -138,12 +144,29 @@
       const errorNotification = document.getElementById('notification-error');
       const solution = removeAccents(inputValue);
 
+      const audio = new Audio('./6-feladat/TMNTIntro.mp3');
+
       if (solution === 'kupeczky' || solution === 'durer'  || solution === 'dürer'  || solution === 'tizian' ) {
         showNotification(successNotification);
         setTimeout(() => {
           window.location.href = '10.html';
         }, 2000); // Navigálás 2 másodperc után
-      } else {
+      }
+      else if (solution.includes('natel')) {        
+
+        if (isAudioPlaying === false) {
+
+          isAudioPlaying = true;
+          document.body.style.backgroundColor = 'green';
+          audio.play();          
+          audio.addEventListener('ended', () => {
+          document.body.style.backgroundColor = '';
+          showNotification(errorNotification);
+          isAudioPlaying = false;
+        });
+        }   
+      }
+      else {
         showNotification(errorNotification);
       }
 
