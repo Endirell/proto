@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cubes</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #282c34;
+            flex-direction: column;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .middle-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #61dafb;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cube-container {
+            perspective: 1000px;
+            margin: 20px 0;
+        }
+
+        .cube {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            margin: 0 20px;
+        }
+
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #000;
+        }
+
+        .front  { transform: translateZ(100px); }
+        .back   { transform: rotateY(180deg) translateZ(100px); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); }
+        .right  { transform: rotateY(90deg) translateZ(100px); }
+        .top    { transform: rotateX(90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="up1">↑</button>
+        <div class="middle-controls">
+            <button id="left1">←</button>
+            <div class="cube-container">
+                <div class="cube" id="cube1">
+                    <div class="face front" id="1A" style="background-image: url(./Inventory/Dobokocka1.bmp); background-size: cover;"></div>
+                    <div class="face back" id="2A" style="background-image: url(./Inventory/Dobokocka2.bmp); background-size: cover;" ></div>
+                    <div class="face left" id="4A" style="background-image: url(./Inventory/Dobokocka4.bmp); background-size: cover;" ></div>
+                    <div class="face right" id="6A" style="background-image: url(./Inventory/Dobokocka6.bmp); background-size: cover;" ></div>
+                    <div class="face top" id="3A" style="background-image: url(./Inventory/Dobokocka3.bmp); background-size: cover;" ></div>
+                    <div class="face bottom" id="5A" style="background-image: url(./Inventory/Dobokocka5.bmp); background-size: cover;" ></div>
+                </div>
+            </div>
+            <button id="right1">→</button>
+        </div>
+        <button id="down1">↓</button>
+    </div>
+    <div class="controls">
+        <button id="up2">↑</button>
+        <div class="middle-controls">
+            <button id="left2">←</button>
+            <div class="cube-container">
+                <div class="cube" id="cube2">
+                    <div class="face front" id="1A" style="background-image: url(./Inventory/Astrokocka1.bmp); background-size: cover;"></div>
+                    <div class="face back" id="2B" style="background-image: url(./Inventory/Astrokocka2.bmp); background-size: cover;"></div>
+                    <div class="face left" id="4B" style="background-image: url(./Inventory/Astrokocka4.bmp); background-size: cover;"></div>
+                    <div class="face right" id="6B" style="background-image: url(./Inventory/Astrokocka6.bmp); background-size: cover;"></div>
+                    <div class="face top" id="3B" style="background-image: url(./Inventory/Astrokocka3.bmp); background-size: cover;"></div>
+                    <div class="face bottom" id="5B" style="background-image: url(./Inventory/Astrokocka5.bmp); background-size: cover;"></div>
+                </div>
+            </div>
+            <button id="right2">→</button>
+        </div>
+        <button id="down2">↓</button>
+    </div>
+    <script>
+        let rotateX1 = 0;
+        let rotateY1 = 0;
+
+        let rotateX2 = 0;
+        let rotateY2 = 0;
+
+        document.getElementById('up1').addEventListener('click', () => {
+            rotateX1 -= 90;
+            updateCubeRotation('cube1', rotateX1, rotateY1);
+        });
+
+        document.getElementById('down1').addEventListener('click', () => {
+            rotateX1 += 90;
+            updateCubeRotation('cube1', rotateX1, rotateY1);
+        });
+
+        document.getElementById('left1').addEventListener('click', () => {
+            rotateY1 -= 90;
+            updateCubeRotation('cube1', rotateX1, rotateY1);
+        });
+
+        document.getElementById('right1').addEventListener('click', () => {
+            rotateY1 += 90;
+            updateCubeRotation('cube1', rotateX1, rotateY1);
+        });
+
+        document.getElementById('up2').addEventListener('click', () => {
+            rotateX2 -= 90;
+            updateCubeRotation('cube2', rotateX2, rotateY2);
+        });
+
+        document.getElementById('down2').addEventListener('click', () => {
+            rotateX2 += 90;
+            updateCubeRotation('cube2', rotateX2, rotateY2);
+        });
+
+        document.getElementById('left2').addEventListener('click', () => {
+            rotateY2 -= 90;
+            updateCubeRotation('cube2', rotateX2, rotateY2);
+        });
+
+        document.getElementById('right2').addEventListener('click', () => {
+            rotateY2 += 90;
+            updateCubeRotation('cube2', rotateX2, rotateY2);
+        });
+
+        function updateCubeRotation(cubeId, rotateX, rotateY) {
+            const cube = document.getElementById(cubeId);
+            cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+    </script>
+</body>
+</html>

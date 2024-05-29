@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory</title>
+  <link rel="stylesheet" href="https://unpkg.com/@carbon/styles@1.34.0/css/styles.css">
+  <style>
+    body {
+      padding: 1rem;      
+    }
+
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    .miniaturized {
+      width: 100px;
+      height: auto;      
+    }
+
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
+    }
+
+    .hiddencube {
+      display: none;     
+    }
+
+    .controls {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .middle-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      border: 3px solid black;
+      font-size: 24px;
+    }
+
+    .cube-container {
+      perspective: 1000px;
+      margin: 20px 0;
+    }
+
+    .cube {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      margin: 0 20px;
+    }
+
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .front { transform: translateZ(100px); }
+    .back { transform: rotateY(180deg) translateZ(100px); }
+    .left { transform: rotateY(-90deg) translateZ(100px); }
+    .right { transform: rotateY(90deg) translateZ(100px); }
+    .top { transform: rotateX(90deg) translateZ(100px); }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">
+      <img id="picture1" src="./Inventory/Jegy.png" class="miniaturized" onclick="togglePicture('picture1')"><br>
+      <img id="picture2" src="./Inventory/Szotar.png" class="miniaturized" onclick="togglePicture('picture2')"><br>
+      <img id="picture3" src="./Inventory/Regiseg.jpg" class="miniaturized" onclick="togglePicture('picture3')"><br>
+      <img id="picture4" src="./Inventory/Dobokocka1.bmp" class="miniaturized" onclick="enlargeCube('cube1', 'controls1', 'picture4')"><br>
+      <img id="picture5" src="./Inventory/Astrokocka1.bmp" class="miniaturized" onclick="enlargeCube('cube2', 'controls2', 'picture5')"><br>
+    </div>
+  </div>
+
+  <div class="controls" id="controls1">
+    <button id="up1">↑</button>
+    <div class="middle-controls">
+      <button id="left1">←</button>
+      <div class="cube-container">
+        <div class="cube" id="cube1">
+          <div class="face front" id="1A" style="background-image: url(./Inventory/Dobokocka1.bmp); background-size: cover;"></div>
+          <div class="face back" id="2A" style="background-image: url(./Inventory/Dobokocka2.bmp); background-size: cover;"></div>
+          <div class="face left" id="4A" style="background-image: url(./Inventory/Dobokocka4.bmp); background-size: cover;"></div>
+          <div class="face right" id="6A" style="background-image: url(./Inventory/Dobokocka6.bmp); background-size: cover;"></div>
+          <div class="face top" id="3A" style="background-image: url(./Inventory/Dobokocka3.bmp); background-size: cover;"></div>
+          <div class="face bottom" id="5A" style="background-image: url(./Inventory/Dobokocka5.bmp); background-size: cover;"></div>
+        </div>
+      </div>
+      <button id="right1">→</button>      
+    </div>
+    <button id="down1">↓</button>
+    <button id="shrink1"  onclick="shrinkCube('cube1', 'controls1', 'picture4')">→←</button>
+  </div>
+
+  <div class="controls" id="controls2">
+    <button id="up2">↑</button>
+    <div class="middle-controls">
+      <button id="left2">←</button>
+      <div class="cube-container">
+        <div class="cube" id="cube2">
+          <div class="face front" id="1B" style="background-image: url(./Inventory/Astrokocka1.bmp); background-size: cover;"></div>
+          <div class="face back" id="2B" style="background-image: url(./Inventory/Astrokocka2.bmp); background-size: cover;"></div>
+          <div class="face left" id="4B" style="background-image: url(./Inventory/Astrokocka4.bmp); background-size: cover;"></div>
+          <div class="face right" id="6B" style="background-image: url(./Inventory/Astrokocka6.bmp); background-size: cover;"></div>
+          <div class="face top" id="3B" style="background-image: url(./Inventory/Astrokocka3.bmp); background-size: cover;"></div>
+          <div class="face bottom" id="5B" style="background-image: url(./Inventory/Astrokocka5.bmp); background-size: cover;"></div>
+        </div>
+      </div>
+      <button id="right2">→</button>      
+    </div>
+    <button id="down2">↓</button>
+    <button id="shrink2"  onclick="shrinkCube('cube2', 'controls2', 'picture5')">→←</button>
+  </div>
+
+  <script>
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }
+      
+    }
+
+    function enlargeCube(cubeId, controlsId, pictureId) {
+      document.getElementById(cubeId).classList.add('enlarged');
+      document.getElementById(controlsId).style.display = 'flex';
+      document.getElementById(pictureId).style.display = 'none';
+    }
+
+    function shrinkCube(cubeId, controlsId, pictureId) {
+      document.getElementById(cubeId).classList.remove('enlarged');
+      document.getElementById(controlsId).style.display = 'none';
+      document.getElementById(pictureId).style.display = 'block';
+    }
+
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
+      }
+    });
+
+    let rotateX1 = 0;
+    let rotateY1 = 0;
+
+    let rotateX2 = 0;
+    let rotateY2 = 0;
+
+    document.getElementById('up1').addEventListener('click', () => {
+      rotateX1 -= 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('down1').addEventListener('click', () => {
+      rotateX1 += 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('left1').addEventListener('click', () => {
+      rotateY1 -= 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('right1').addEventListener('click', () => {
+      rotateY1 += 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('shrink1').addEventListener('click', () => {
+      shrinkCube('cube1', 'controls1');
+    });
+
+    document.getElementById('up2').addEventListener('click', () => {
+      rotateX2 -= 90;
+      updateCubeRotation('cube2', rotateX2, rotateY2);
+    });
+
+    document.getElementById('down2').addEventListener('click', () => {
+      rotateX2 += 90;
+      updateCubeRotation('cube2', rotateX2, rotateY2);
+    });
+
+    document.getElementById('left2').addEventListener('click', () => {
+      rotateY2 -= 90;
+      updateCubeRotation('cube2', rotateX2, rotateY2);
+    });
+
+    document.getElementById('right2').addEventListener('click', () => {
+      rotateY2 += 90;
+      updateCubeRotation('cube2', rotateX2, rotateY2);
+    });
+
+    document.getElementById('shrink2').addEventListener('click', () => {
+      shrinkCube('cube2', 'controls2');
+    });
+
+    function updateCubeRotation(cubeId, rotateX, rotateY) {
+      const cube = document.getElementById(cubeId);
+      cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
+  </script>
+</body>
+
+</html>
