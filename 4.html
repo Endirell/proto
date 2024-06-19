@@ -48,12 +48,13 @@
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-      cursor: pointer;
-      color: blue;
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
     }
   </style>
 </head>
@@ -74,6 +75,8 @@
       <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-8"><label for="checkbox-8" class="hidden-checkbox-label"><img src="./4-feladat/Kotta 8.png"></label></p>
       <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-9"><label for="checkbox-9" class="hidden-checkbox-label"><img src="./4-feladat/Kotta 9.png"></label></p>
       <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-10"><label for="checkbox-10" class="hidden-checkbox-label"><img src="./4-feladat/Kotta 10.png"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-11"><label for="checkbox-11" class="hidden-checkbox-label"><img src="./4-feladat/Kotta 11.png"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-12"><label for="checkbox-12" class="hidden-checkbox-label"><img src="./4-feladat/Kotta 12.png"></label></p>
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -99,14 +102,11 @@
       </p>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">
-        <p id="item1" class="clickable" onclick="showPicture('picture1'); toggleVisibility('item1')">Vonatjegy<br><br></p>
-        <img id="picture1" src="./Inventory/Jegy.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture1'); toggleVisibility('item1')"><br>
-        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
-        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>        
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">
+      <img id="jegy" src="./Inventory/Jegy.png" class="miniaturized" onclick="togglePicture('jegy')"><br>      
+      <img id="puzzle" src="./Inventory/Puzzle1.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
+      <img id="szotar" src="./Inventory/Szotar.png" class="miniaturized" onclick="togglePicture('szotar')"><br>   
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
@@ -127,29 +127,23 @@
       return false;
     }
 
-    function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }      
+    }
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
-    });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
     });
     
     function checkInput() {
@@ -161,9 +155,10 @@
     let isCorrect = false;
     
     let three = false;
-    let seven = false;
-    let nine = false;
-    let ten = false;
+    let five = false;
+    let six = false;
+    let nine = false;    
+    let twelve = false;
 
     // Loop through all checkboxes
     for (const checkbox of checkboxes) {
@@ -173,14 +168,17 @@
         if (checkbox.id === 'checkbox-3') {
             three = true;
         }
-        else if (checkbox.id === 'checkbox-7') {
-            seven = true;
+        else if (checkbox.id === 'checkbox-5') {
+            five = true;
+        }
+        else if (checkbox.id === 'checkbox-6') {
+            six = true;
         }
         else if (checkbox.id === 'checkbox-9') {
             nine = true;
-        }
-        else if (checkbox.id === 'checkbox-10') {
-            ten = true;
+        }        
+        else if (checkbox.id === 'checkbox-12') {
+            twelve = true;
         }
         else {
             isCorrect = false;
@@ -189,7 +187,7 @@
       }
     }  
     
-    if (three && seven && nine && ten === false) {
+    if (three && five && six && nine && twelve) {
         isCorrect = true;
     }
 
@@ -199,7 +197,7 @@
       if (isCorrect) {
         showNotification(successNotification);
         setTimeout(() => {
-          window.location.href = '5.html';
+          window.location.href = 'szoveg4.html';
         }, 2000); // Navigálás 2 másodperc után
       } else {
         showNotification(errorNotification);
