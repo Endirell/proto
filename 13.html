@@ -36,65 +36,69 @@
     .cds--text-input::placeholder {
     color: white;
     }
-   .cds--form select {
+    .cds--form select {
     margin-right: 28px; /* Adjust the gap between dropdowns */
     /* Add additional styling for select elements if needed */
+     }
+    .columncontainer {
+        display: flex;
+        margin-bottom: 20px;
+     }
+
+    .column {
+        flex: 1;
+        padding: 10px;        
+    }
+    .column p{
+      font-size: 34px;       
+    }
+    /* Optional: To add some space between the columns */
+    .column + .column {
+        margin-left: 10px;
+    }
+    select {
+        font-size: 34px; /* Change the font size here */
+    }
+    .hint-images .hidden {
+      display: none;
+    }
+    .hidden-checkbox:checked + .hidden-checkbox-label {
+      background-color: var(--cds-button-secondary-active, #6f6f6f);
     }
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-     cursor: pointer;
-     color: blue;
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
     }  
   </style>
 </head>
 
 <body>
-  <div class="container">    
+  <div class="container"> 
     <p class="large-text">      
-      Menjetek a Kodály köröndre!<br><br>
-      Ki hazudik és ki mond igazat?<br>
-    </p>
-    <p style="text-align: left;">
-      <img src="./10-feladat/Kodalykorond.png" alt="10. feladat" style="max-width: 100%; height: auto; margin: 10px;">
-    </p>
+      Menjetek a Hopp Ferenc Ázsiai Művészeti Múzeumhoz (Andrássy út 103.)!<br><br>    
+    </p>   
     <form class="cds--form" style="display: block; margin-left: 28px;" onsubmit="return checkInput()">
-      <div>
-        <label for="Bottyan">Bottyán</label>
-        <select id="Bottyan" name="Bottyán" >
-          <option value="0"></option>
-          <option value="✔">Igazat mond</option>
-          <option value="X">Hazudik</option>              
-        </select>
-      </div>
-      <div>
-        <label for="Gyorgy">György</label>
-        <select id="Gyorgy" name="György" >
-          <option value="0"></option>
-          <option value="✔">Igazat mond</option>
-          <option value="X">Hazudik</option>              
-        </select> 
-      </div>
-      <div>
-        <label for="Balint">Bálint</label>
-        <select id="Balint" name="Bálint" >
-          <option value="0"></option>
-          <option value="✔">Igazat mond</option>
-          <option value="X">Hazudik</option>              
-        </select> 
-      </div>
-      <div>
-        <label for="Miklos">Miklós</label>
-        <select id="Miklos" name="Miklós" >
-          <option value="0"></option>
-          <option value="✔">Igazat mond</option>
-          <option value="X">Hazudik</option>              
-        </select>    
-      </div>
+      <select id="Building" name="Building" >
+        <option value="0">👁</option>
+        <option value="1">宮</option>
+        <option value="2">狱</option>
+        <option value="3">庙</option>  
+        <option value="4">塔</option>               
+      </select>   
+      <select id="Animal" name="Animal" >
+        <option value="0">👁</option>
+        <option value="1">龍</option>
+        <option value="2">鹤</option>
+        <option value="3">象</option> 
+        <option value="4">虎</option>           
+      </select>                   
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -115,71 +119,62 @@
           </div>
         </div>
       </div>
-      <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
+      <button class="cds--btn cds--btn--primary submit-btn" type="submit" style="display: block;">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">        
-        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
-        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
-        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
-        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">
+      <img id="puzzle" src="./Inventory/Puzzle6.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
+      <img id="szotar" src="./Inventory/Szotar.png" class="miniaturized" onclick="togglePicture('szotar')"><br>     
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
-    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
-    <div class="hint-img">
+    <div class="hint-images">
+      <img src="./13-feladat/Segitseg1.jpg" alt="segítség" class="hidden" style="max-width: 100%; height: auto;">
       <p class="large-text">      
-        Ketten mondanak igazat
-      </p>
+        <br>
+      </p>  
+      <img src="./13-feladat/Segitseg2.jpg" alt="segítség" class="hidden" style="max-width: 100%; height: auto;">
     </div>
+    <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
   </div>
 
-  <script>       
+  <script>    
     function showHint() {
-      document.querySelector('.hint-img').style.display = 'block';
+      document.querySelector('.hint-images .hidden').classList.remove('hidden');
+      document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
 
-    function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }      
+    }
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
-    });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
     });
     
     function checkInput() {
-      const Bottyan = document.getElementById('Bottyan').value;
-      const Gyorgy = document.getElementById('Gyorgy').value;
-      const Balint = document.getElementById('Balint').value;
-      const Miklos = document.getElementById('Miklos').value;
+      const animal = document.getElementById('Animal').value;
+      const building = document.getElementById('Building').value;
           
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
 
-      if (Bottyan === "✔" && Gyorgy === "X" && Balint === "X" && Miklos === "✔") {
+      if (animal === "3" && building === "4") {
         showNotification(successNotification);
         setTimeout(() => {
-          window.location.href = 'szoveg2.html';
+          window.location.href = 'szoveg9.html';
         }, 2000); // Navigálás 2 másodperc után
       } else {
         showNotification(errorNotification);
