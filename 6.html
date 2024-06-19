@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -32,77 +32,80 @@
     }
     .hint-img {
       display: none;
-    }    
+    }
+    .cds--text-input::placeholder {
+    color: white;
+    }
+    .cds--form select {
+    margin-right: 28px; /* Adjust the gap between dropdowns */
+    /* Add additional styling for select elements if needed */
+    }
+    .image-select-container {
+     display: block;
+     margin-bottom: 10px; /* Adjust spacing between image-select pairs if needed */
+    }
+    .image-container, .select-container {
+    display: block;
+    text-align: center;
+    }  
     .hint-images .hidden {
       display: none;
+    }
+    .selectoptions {      
+      width: 100px;
+      text-align: center;
+    }
+    .select-container {
+      position: relative;
+      margin-bottom: 60px;
+      margin-top: 8px;
+    }
+    .select-container select {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hidden-checkbox:checked + .hidden-checkbox-label {
+      display: inline-block;      
+      opacity: 0.0;
     }
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-      cursor: pointer;
-      color: blue;
-    } 
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
+    }  
   </style>
 </head>
 
 <body>
   <div class="container">
     <p class="large-text">      
-      LÁNG<br><br>
-    </p>     
+      Menjetek át a belső járdára!<br><br>
+    </p>      
     <form class="cds--form" onsubmit="return checkInput()">
-      <select id="firstDot" name="firstDot">        
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-      <select id="secondDot" name="secondDot">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-      <select id="thirdDot" name="thirdDot">        
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-      <select id="fourthDot" name="fourthDot">        
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>      
+      <p>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-1"><label for="checkbox-1" class="hidden-checkbox-label"><img src="./6-feladat/M.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-2"><label for="checkbox-2" class="hidden-checkbox-label"><img src="./6-feladat/M.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-3"><label for="checkbox-3" class="hidden-checkbox-label"><img src="./6-feladat/D.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-4"><label for="checkbox-4" class="hidden-checkbox-label"><img src="./6-feladat/C.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-5"><label for="checkbox-5" class="hidden-checkbox-label"><img src="./6-feladat/C.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-6"><label for="checkbox-6" class="hidden-checkbox-label"><img src="./6-feladat/C.bmp"></label><br>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-7"><label for="checkbox-7" class="hidden-checkbox-label"><img src="./6-feladat/L.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-8"><label for="checkbox-8" class="hidden-checkbox-label"><img src="./6-feladat/X.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-9"><label for="checkbox-9" class="hidden-checkbox-label"><img src="./6-feladat/X.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-10"><label for="checkbox-10" class="hidden-checkbox-label"><img src="./6-feladat/X.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-11"><label for="checkbox-11" class="hidden-checkbox-label"><img src="./6-feladat/V.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-12"><label for="checkbox-12" class="hidden-checkbox-label"><img src="./6-feladat/I.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-13"><label for="checkbox-13" class="hidden-checkbox-label"><img src="./6-feladat/I.bmp"></label>
+          <input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-14"><label for="checkbox-14" class="hidden-checkbox-label"><img src="./6-feladat/I.bmp"></label>
+    </p>                      
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -123,78 +126,165 @@
           </div>
         </div>
       </div>
-      <button class="cds--btn cds--btn--primary submit-btn" type="submit" style="display: block;">MEHET</button>
+      <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">
-        <p id="item1" class="clickable" onclick="showPicture('picture1'); toggleVisibility('item1')">Vonatjegy<br><br></p>
-        <img id="picture1" src="./Inventory/Jegy.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture1'); toggleVisibility('item1')"><br>
-        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
-        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
-        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
-        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">
+      <img id="jegy" src="./Inventory/Jegy.png" class="miniaturized" onclick="togglePicture('jegy')"><br>      
+      <img id="puzzle" src="./Inventory/Puzzle3.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
+      <img id="szotar" src="./Inventory/Szotar.png" class="miniaturized" onclick="togglePicture('szotar')"><br>   
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
       <p class="hidden">      
-        Emléktábla
+        Kattintsatok a betűkre!
       </p>
       <p class="hidden">      
-        Láng Adolf
+        A ház homlokzatának a felső részét nézzétek 
+      </p>
+      <p class="hidden">      
+        Ez egy dátum római számokkal
       </p>              
     </div>
     <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
   </div>
 
-  <script>
+  <script>    
     function showHint() {
       document.querySelector('.hint-images .hidden').classList.remove('hidden');
       document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
       return false;
     }
 
-    function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }      
+    }
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
-    });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
     });
     
     function checkInput() {
-      const firstDot = document.getElementById('firstDot').value;
-      const secondDot = document.getElementById('secondDot').value;
-      const thirdDot = document.getElementById('thirdDot').value;
-      const fourthDot = document.getElementById('fourthDot').value;      
+    // Get all checkboxes by name
+    const checkboxes = document.getElementsByName('checkboxes');
 
-      const solution = '1877';
+    // Initialize variables to track selected checkboxes and whether all conditions are met
+    
+    let isCorrect = false;  
+    
+    let M1 = false;
+    let M2 = false;
+    let D = false;
+    let C1 = false;
+    let C2 = false;
+    let C3 = false;
+    let L = false;
+    let X1 = false;
+    let X2 = false;
+    let X3 = false;
+    let V = false;
+    let I1 = false;
+    let I2 = false;
+    let I3 = false;
 
-      const inputValue = firstDot + secondDot + thirdDot + fourthDot;
+    let isM = false;
+    let isX = false;
+    let isI = false;
+    let isRest = false;
+
+    // Loop through all checkboxes
+    for (const checkbox of checkboxes) {
+      if (checkbox.checked) {        
+                       
+        if (checkbox.id === 'checkbox-1') {
+            M1 = true;
+        }
+        else if (checkbox.id === 'checkbox-2') {
+            M2 = true;
+        }
+        else if (checkbox.id === 'checkbox-3') {
+            D = true;
+        }  
+        else if (checkbox.id === 'checkbox-4') {
+            C1 = true;
+        }  
+        else if (checkbox.id === 'checkbox-5') {
+            C2 = true;
+        }  
+        else if (checkbox.id === 'checkbox-6') {
+            C3 = true;
+        }  
+        else if (checkbox.id === 'checkbox-7') {
+            L = true;
+        }  
+        else if (checkbox.id === 'checkbox-8') {
+            X1 = true;
+        }
+        else if (checkbox.id === 'checkbox-9') {
+            X2 = true;
+        } 
+        else if (checkbox.id === 'checkbox-10') {
+            X3 = true;
+        } 
+        else if (checkbox.id === 'checkbox-11') {
+            V = true;
+        } 
+        else if (checkbox.id === 'checkbox-12') {
+            I1 = true;
+        } 
+        else if (checkbox.id === 'checkbox-13') {
+            I2 = true;
+        } 
+        else if (checkbox.id === 'checkbox-14') {
+            I3 = true;
+        }     
+        else {
+          isCorrect = false;
+        break;
+        }
+      }
+    }      
+
+    if (!D && !C1 && !C2 && !C3 && !L && !V){
+      isRest = true;
+    }
+
+    if (M1 || M2){
+      isM = true;
+    }
+
+    if ((M1 && M2) || (!M1 && !M2)){
+      isM = false;
+    }
+
+    if ((X1 && !X2 && !X3) || (!X1 && !X2 && X3) || (!X1 && X2 && !X3)){
+      isX = true;
+    }
+
+    if ((I1 && !I2 && !I3) || (!I1 && !I2 && I3) || (!I1 && I2 && !I3)){
+      isI = true;
+    }
+    
+    if (isRest && isM && isX && isI){
+      isCorrect = true;
+    }
 
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
 
-      if (inputValue === solution) {
+      if (isCorrect) {
         showNotification(successNotification);
         setTimeout(() => {
           window.location.href = '7.html';
