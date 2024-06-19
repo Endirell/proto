@@ -46,12 +46,13 @@
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-      cursor: pointer;
-      color: blue;
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
     }   
   </style>
 </head>
@@ -102,14 +103,10 @@
       </p>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">
-        <p id="item1" class="clickable" onclick="showPicture('picture1'); toggleVisibility('item1')">Vonatjegy<br><br></p>
-        <img id="picture1" src="./Inventory/Jegy.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture1'); toggleVisibility('item1')"><br>
-        <p  id="item2" class="clickable" onclick="showPicture('picture2'); toggleVisibility('item2')">Szótár<br><br></p>
-        <img id="picture2" src="./Inventory/Szotar.png" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture2'); toggleVisibility('item2')"><br>
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>        
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">
+      <img id="jegy" src="./Inventory/Jegy.png" class="miniaturized" onclick="togglePicture('jegy')"><br>
+      <img id="puzzle" src="./Inventory/Puzzle1.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
@@ -133,29 +130,23 @@
       return false;
     }
 
-    function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }      
+    }
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
-    });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
     });
     
     function checkInput() {
@@ -203,7 +194,7 @@
       if (isCorrect) {
         showNotification(successNotification);
         setTimeout(() => {
-          window.location.href = '4.html';
+          window.location.href = 'szoveg3.html';
         }, 2000); // Navigálás 2 másodperc után
       } else {
         showNotification(errorNotification);
