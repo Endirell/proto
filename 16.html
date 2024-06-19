@@ -33,118 +33,64 @@
     .hint-img {
       display: none;
     }
-    .hint-images .hidden {
-      display: none;
+    ::placeholder {
+        font-weight: bolder;
+    }
+    #A::placeholder {
+        color: rgb(206, 206, 206);
+    }
+    #B::placeholder {
+        color: rgb(82, 82, 82);
+    }
+    #C::placeholder {
+        color: rgb(206, 206, 206);
+    }
+    #D::placeholder {
+        color: rgb(206, 206, 206);
+    }
+    #E::placeholder {
+        color: rgb(206, 206, 206);
+    }
+    #F::placeholder {
+        color: rgb(206, 206, 206);
+    }
+    #G::placeholder {
+        color: rgb(82, 82, 82);
     }
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-      cursor: pointer;
-      color: blue;
-    } 
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
+    }  
   </style>
 </head>
 
 <body>
-  <div class="container">       
-    <p style="text-align: left;">
-      <img src="./4night-feladat/Fresko.jpg" alt="5. feladat" style="max-width: 100%; height: auto">
-    </p> 
+  <div class="container">
+    <p class="large-text">
+      <!--
+      Menjetek az Andrássy út 60. Csengery utca felőli sarkára!<br>
+      Ellenőrizzük, hogy jó helyen álltok-e!<br>
+      Milyen évszám van a falra felírva?
+      -->
+    </p>
+    <p style="text-align: center;">
+      <img src="./16-feladat/Positions.png" alt="16. feladat" style="max-width: 100%; height: auto">
+    </p>
     <form class="cds--form" onsubmit="return checkInput()">
-      <select id="firstDot" name="firstDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="secondDot" name="secondDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="thirdDot" name="thirdDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="fourthDot" name="fourthDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="fifthDot" name="fifthDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="sixthDot" name="sixthDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="seventhDot" name="seventhDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="eigthDot" name="eigthDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
-      <select id="ninthDot" name="ninthDot">
-        <option value=".">.</option>
-        <option value="I">I</option>
-        <option value="V">V</option>
-        <option value="X">X</option>
-        <option value="L">L</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="M">M</option>
-      </select>
+      <input type="text" id = "A" class="cds--text-input" placeholder="A" inputmode="text" required style="color: white; background-color: red;">
+      <input type="text" id = "B" class="cds--text-input" placeholder="B" inputmode="text" required style="color: black; background-color: yellow;">
+      <input type="text" id = "C" class="cds--text-input" placeholder="C" inputmode="text" required style="color: white; background-color: green;">
+      <input type="text" id = "D" class="cds--text-input" placeholder="D" inputmode="text" required style="color: white; background-color: blue;">
+      <input type="text" id = "E" class="cds--text-input" placeholder="E" inputmode="text" required style="color: white; background-color: purple;">
+      <input type="text" id = "F" class="cds--text-input" placeholder="F" inputmode="text" required style="color: white; background-color: brown;">
+      <input type="text" id = "G" class="cds--text-input" placeholder="G" inputmode="text" required style="color: black; background-color: pink;">
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -165,87 +111,65 @@
           </div>
         </div>
       </div>
-      <button class="cds--btn cds--btn--primary submit-btn" type="submit" style="display: block;">MEHET</button>
+      <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">       
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
-        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
-        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
-        <p  id="item6" class="clickable" onclick="showPicture('picture6'); toggleVisibility('item6')">Piros cetli<br><br></p>
-        <img id="picture6" src="./Inventory/Piros cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture6'); toggleVisibility('item6')"><br>        
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">        
+      <img id="puzzle" src="./Inventory/Puzzle7.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
+      <img id="regiseg" src="./Inventory/Regiseg.jpg" class="miniaturized" onclick="togglePicture('regiseg')"><br>  
     </div> 
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
-    <div class="hint-images">
-      <p class="hidden">      
-        A Hősök teréről rá lehet látni épületekre
-      </p>
-      <p class="hidden">      
-        Két nagy épületre
-      </p>
-      <p class="hidden">      
-        Műcsarnok
-      </p>            
-    </div>
     <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
+    <div class="hint-img">
+      <img src="./13-feladat/Segitseg.jpg" alt="segítség" style="max-width: 100%; height: auto;">
+    </div>
   </div>
 
   <script>
     function showHint() {
-      document.querySelector('.hint-images .hidden').classList.remove('hidden');
-      document.querySelector('.cds--link').innerHTML = 'Még kérek segítséget';
+      document.querySelector('.hint-img').style.display = 'block';
       return false;
     }
 
-    function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
+      }      
+    }
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
-    });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
     });
     
+    function removeAccents(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
     function checkInput() {
-      const firstDot = document.getElementById('firstDot').value;
-      const secondDot = document.getElementById('secondDot').value;
-      const thirdDot = document.getElementById('thirdDot').value;
-      const fourthDot = document.getElementById('fourthDot').value;
-      const fifthDot = document.getElementById('fifthDot').value;
-      const sixthDot = document.getElementById('sixthDot').value;
-      const seventhDot = document.getElementById('seventhDot').value;
-      const eigthDot = document.getElementById('eigthDot').value;
-      const ninthDot = document.getElementById('ninthDot').value;
-
-      const solution = 'MDCCCXCVI';
-
-      const inputValue = firstDot + secondDot + thirdDot + fourthDot + fifthDot + sixthDot + seventhDot + eigthDot + ninthDot;
-
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
+      
+      const solutionA = removeAccents(document.getElementById('A').value.trim().toLowerCase());
+      const solutionB = removeAccents(document.getElementById('B').value.trim().toLowerCase());  
+      const solutionC = removeAccents(document.getElementById('C').value.trim().toLowerCase());  
+      const solutionD = removeAccents(document.getElementById('D').value.trim().toLowerCase());  
+      const solutionE = removeAccents(document.getElementById('E').value.trim().toLowerCase());  
+      const solutionF = removeAccents(document.getElementById('F').value.trim().toLowerCase());  
+      const solutionG = removeAccents(document.getElementById('G').value.trim().toLowerCase());  
 
-      if (inputValue === solution) {
+      if (solutionA === 'huba' && solutionB === 'kond' && solutionC === 'arpad' && solutionD === 'teteny' && solutionE === 'ond' && solutionF === 'elod' && solutionG === 'tas') {
         showNotification(successNotification);
         setTimeout(() => {
-          window.location.href = 'szoveg3.html';
+          window.location.href = 'szoveg11.html';
         }, 2000); // Navigálás 2 másodperc után
       } else {
         showNotification(errorNotification);
