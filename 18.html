@@ -46,147 +46,114 @@
     }
     .image-container, .select-container {
     display: block;
+    text-align: center;
     }  
     .hint-images .hidden {
       display: none;
     }.hidden-checkbox:checked + .hidden-checkbox-label {
       background-color: var(--cds-button-secondary-active, #6f6f6f);
     } 
+    .selectoptions {      
+      width: 100px;
+      text-align: center;
+    }
+    .select-container {
+      position: relative;
+      margin-bottom: 60px;
+      margin-top: 8px;
+    }
+    .select-container select {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hidden-checkbox:checked + .hidden-checkbox-label {
+      display: inline-block;      
+      opacity: 0.5;
+    }
     .whitespace2 {
       height: 10rem;
     }
-    .dontshow {
-      display: none;
+    .miniaturized {
+      width: 100px;
+      height: auto;      
     }
-    .clickable {
-      cursor: pointer;
-      color: blue;
-    }   
+
+    .enlarged {
+      max-width: 100%;
+      height: auto;      
+    }
+
+    .hiddencube {
+      display: none;     
+    }
+
+    .controls {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .middle-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      border: 3px solid black;
+      font-size: 24px;
+    }
+
+    .cube-container {
+      perspective: 1000px;
+      margin: 20px 0;
+    }
+
+    .cube {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      margin: 0 20px;
+    }
+
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .front { transform: translateZ(100px); }
+    .back { transform: rotateY(180deg) translateZ(100px); }
+    .left { transform: rotateY(-90deg) translateZ(100px); }
+    .right { transform: rotateY(90deg) translateZ(100px); }
+    .top { transform: rotateX(90deg) translateZ(100px); }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); } 
   </style>
 </head>
 
 <body>
-  <div class="container">      
-    <form class="cds--form" style="display: block; margin-left: 28px;" onsubmit="return checkInput()">
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer1.jpg">
-        </div>
-        <div class="select-container">
-          <select id="1" name="1" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer2.jpg">
-        </div>
-        <div class="select-container">
-          <select id="2" name="2" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer3.jpg">
-        </div>
-        <div class="select-container">
-          <select id="3" name="3" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer4.jpg">
-        </div>
-        <div class="select-container">
-          <select id="4" name="4" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer5.jpg">
-        </div>
-        <div class="select-container">
-          <select id="5" name="5" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer6.jpg">
-        </div>
-        <div class="select-container">
-          <select id="6" name="6" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>
-      <div class="image-select-container">
-        <div class="image-container">
-          <img src="./14-feladat/Vezer7.jpg">
-        </div>
-        <div class="select-container">
-          <select id="7" name="7" >
-            <option value="0"></option>
-            <option value="1">Árpád</option>
-            <option value="2">Előd</option>
-            <option value="3">Ond</option>
-            <option value="4">Kond</option>
-            <option value="5">Tas</option>
-            <option value="6">Huba</option>
-            <option value="7">Tétény</option>             
-          </select>
-        </div>
-      </div>                 
+  <div class="container">     
+    <form class="cds--form" onsubmit="return checkInput()">
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-1"><label for="checkbox-1" class="hidden-checkbox-label"><img src="./18-feladat/1.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-2"><label for="checkbox-2" class="hidden-checkbox-label"><img src="./18-feladat/2.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-3"><label for="checkbox-3" class="hidden-checkbox-label"><img src="./18-feladat/3.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-4"><label for="checkbox-4" class="hidden-checkbox-label"><img src="./18-feladat/4.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-5"><label for="checkbox-5" class="hidden-checkbox-label"><img src="./18-feladat/5.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-6"><label for="checkbox-6" class="hidden-checkbox-label"><img src="./18-feladat/6.jpg"></label></p>
+      <p><input name="checkboxes" type="checkbox" class="hidden-checkbox cds--visually-hidden" id="checkbox-7"><label for="checkbox-7" class="hidden-checkbox-label"><img src="./18-feladat/7.jpg"></label></p>                      
       <div class="cds--inline-notification cds--inline-notification--success" id="notification-success">
         <div class="cds--inline-notification__details">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="cds--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
@@ -210,40 +177,43 @@
       <button class="cds--btn cds--btn--primary submit-btn" type="submit">MEHET</button>
     </form>
     <div class="whitespace"></div> <!-- Add whitespace between form and link -->
-    <p id="inventory" class="clickable" style="font-size: 28px;">Tárgylista<br><br></p>
-    <div id="inventoryitems" class="dontshow">       
-        <p  id="item3" class="clickable" onclick="showPicture('picture3'); toggleVisibility('item3')">Régiség<br><br></p>
-        <img id="picture3" src="./Inventory/Regiseg.jpg" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture3'); toggleVisibility('item3')"><br>
-        <p  id="item4" class="clickable" onclick="showPicture('picture4'); toggleVisibility('item4')">Zöld cetli<br><br></p>
-        <img id="picture4" src="./Inventory/Zold cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture4'); toggleVisibility('item4')"><br>        
-        <p  id="item6" class="clickable" onclick="showPicture('picture6'); toggleVisibility('item6')">Piros cetli<br><br></p>
-        <img id="picture6" src="./Inventory/Piros cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture6'); toggleVisibility('item6')"><br>
-        <p  id="item8" class="clickable" onclick="showPicture('picture8'); toggleVisibility('item8')">Sárga cetli<br><br></p>
-        <img id="picture8" src="./Inventory/Sarga cetli.bmp" class="dontshow" style="max-width: 100%; height: auto" onclick="hidePicture('picture8'); toggleVisibility('item8')"><br>
-    </div> 
+    <p id="inventory" style="font-size: 28px;">Tárgylista<br></p>
+    <div id="inventoryitems">         
+      <img id="puzzle" src="./Inventory/Puzzle8.bmp" class="miniaturized" onclick="togglePicture('puzzle')"><br>
+      <img id="regiseg" src="./Inventory/Regiseg.jpg" class="miniaturized" onclick="togglePicture('regiseg')"><br>  
+      <img id="dobokocka" src="./Inventory/Dobokocka1.bmp" class="miniaturized" onclick="enlargeCube('cube1', 'controls1', 'dobokocka')"><br>
+    </div>  
+
+  <div class="controls" id="controls1">
+    <button id="up1">↑</button>
+    <div class="middle-controls">
+      <button id="left1">←</button>
+      <div class="cube-container">
+        <div class="cube" id="cube1">
+          <div class="face front" id="1A" style="background-image: url(./Inventory/Dobokocka1.bmp); background-size: cover;"></div>
+          <div class="face back" id="2A" style="background-image: url(./Inventory/Dobokocka2.bmp); background-size: cover;"></div>
+          <div class="face left" id="4A" style="background-image: url(./Inventory/Dobokocka4.bmp); background-size: cover;"></div>
+          <div class="face right" id="6A" style="background-image: url(./Inventory/Dobokocka6.bmp); background-size: cover;"></div>
+          <div class="face top" id="3A" style="background-image: url(./Inventory/Dobokocka3.bmp); background-size: cover;"></div>
+          <div class="face bottom" id="5A" style="background-image: url(./Inventory/Dobokocka5.bmp); background-size: cover;"></div>
+        </div>
+      </div>
+      <button id="right1">→</button>      
+    </div>
+    <button id="down1">↓</button>
+    <button id="shrink1" style="margin-bottom: 70px;" onclick="shrinkCube('cube1', 'controls1', 'dobokocka')">→←</button>
+  </div>
     <div class="whitespace2"></div> <!-- Add whitespace between form and link -->
     <div class="hint-images">
       <p class="hidden">      
-        Előd
+        Valami nem stimmel egyes képekkel
       </p>
       <p class="hidden">      
-        Huba
+        Kettő képpel
       </p>
       <p class="hidden">      
-        Tas
-      </p> 
-      <p class="hidden">      
-        Kond
-      </p> 
-      <p class="hidden">      
-        Tétény
-      </p> 
-      <p class="hidden">      
-        Árpád
-      </p> 
-      <p class="hidden">      
-        Ond
-      </p>      
+        Van valami közös ebben a két alakban
+      </p>         
     </div>
     <a href="#" class="cds--link" onclick="return showHint()">Segítség</a>
   </div>
@@ -255,51 +225,114 @@
       return false;
     }
 
-     function toggleVisibility(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('dontshow')) {
-            element.classList.remove('dontshow');
-        } else {
-            element.classList.add('dontshow');
-        }
-     }
-     function showPicture(id) {
-        toggleVisibility(id);
-     }
-      function hidePicture(id) {
-        toggleVisibility(id);
+    function togglePicture(id) {
+      var picture = document.getElementById(id);
+      if (picture.classList.contains('miniaturized')) {
+        picture.classList.remove('miniaturized');
+        picture.classList.add('enlarged');
+      } else {
+        picture.classList.remove('enlarged');
+        picture.classList.add('miniaturized');
       }
-      document.getElementById('inventory').addEventListener('click', function() {
-        toggleVisibility('inventoryitems');
+      
+    }
+
+    function enlargeCube(cubeId, controlsId, pictureId) {
+      document.getElementById(cubeId).classList.add('enlarged');
+      document.getElementById(controlsId).style.display = 'flex';
+      document.getElementById(pictureId).style.display = 'none';
+    }
+
+    function shrinkCube(cubeId, controlsId, pictureId) {
+      document.getElementById(cubeId).classList.remove('enlarged');
+      document.getElementById(controlsId).style.display = 'none';
+      document.getElementById(pictureId).style.display = 'block';
+    }
+
+    document.getElementById('inventory').addEventListener('click', function() {
+      var inventoryItems = document.getElementById('inventoryitems');
+      if (inventoryItems.style.display === 'none' || inventoryItems.style.display === '') {
+        inventoryItems.style.display = 'block';
+      } else {
+        inventoryItems.style.display = 'none';
+      }
     });
-    var items = document.querySelectorAll('.item');
-    items.forEach(function(item) {
-        item.addEventListener('click', function() {
-            var pictureId = this.getAttribute('data-picture');
-            toggleVisibility(pictureId);
-        });
+
+    let rotateX1 = 0;
+    let rotateY1 = 0;
+
+    let rotateX2 = 0;
+    let rotateY2 = 0;
+
+    document.getElementById('up1').addEventListener('click', () => {
+      rotateX1 -= 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
     });
+
+    document.getElementById('down1').addEventListener('click', () => {
+      rotateX1 += 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('left1').addEventListener('click', () => {
+      rotateY1 -= 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('right1').addEventListener('click', () => {
+      rotateY1 += 90;
+      updateCubeRotation('cube1', rotateX1, rotateY1);
+    });
+
+    document.getElementById('shrink1').addEventListener('click', () => {
+      shrinkCube('cube1', 'controls1');
+    });
+  
+    function updateCubeRotation(cubeId, rotateX, rotateY) {
+      const cube = document.getElementById(cubeId);
+      cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
     
     function checkInput() {
-      const one = document.getElementById('1').value;
-      const two = document.getElementById('2').value;
-      const three = document.getElementById('3').value;
-      const four = document.getElementById('4').value;
-      const five = document.getElementById('5').value;
-      const six = document.getElementById('6').value;
-      const seven = document.getElementById('7').value;
-      
-      const solution = '2654713';
-      
-      const inputValue = one + two + three + four + five + six + seven;
+    // Get all checkboxes by name
+    const checkboxes = document.getElementsByName('checkboxes');
+
+    // Initialize variables to track selected checkboxes and whether all conditions are met
+    
+    let isCorrect = false;  
+    
+    let three = false;
+    let seven = false;
+
+    // Loop through all checkboxes
+    for (const checkbox of checkboxes) {
+      if (checkbox.checked) {
+        
+        // Check if the selected checkboxes are checkbox-3, checkbox-7, and checkbox-9                
+        if (checkbox.id === 'checkbox-3') {
+            three = true;
+        }
+        else if (checkbox.id === 'checkbox-7') {
+            seven = true;
+        }        
+        else {
+            isCorrect = false;
+        break;
+        }
+      }
+    }      
+
+    if (three && seven) {
+        isCorrect = true;
+    }
 
       const successNotification = document.getElementById('notification-success');
       const errorNotification = document.getElementById('notification-error');
 
-      if (inputValue === solution) {
+      if (isCorrect) {
         showNotification(successNotification);
         setTimeout(() => {
-          window.location.href = 'szoveg4.html';
+          window.location.href = 'szoveg13.html';
         }, 2000); // Navigálás 2 másodperc után
       } else {
         showNotification(errorNotification);
@@ -313,7 +346,7 @@
       setTimeout(() => {
         notificationElement.classList.remove('cds--inline-notification--visible');
       }, 2000); // 2 másodperc után elrejtés
-    }
+    }    
   </script>
 </body>
 
